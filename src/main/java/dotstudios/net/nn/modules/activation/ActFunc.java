@@ -82,7 +82,7 @@ public class ActFunc {
                 if(number >= 0) return number;
                 else return Math.max(aPReLU*number,number);
             }
-            case GELU -> {
+            case GeLU -> {
                 return number*0.5*(1 + new ActFunc(ACTFUNCType.Erf,number / Math.sqrt(2)).get());
             }
             case Elu -> {

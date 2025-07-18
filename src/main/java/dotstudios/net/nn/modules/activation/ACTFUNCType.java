@@ -12,7 +12,7 @@ public enum ACTFUNCType {
     ReLU6,
     ReLUofN,
     PReLU,
-    GELU,
+    GeLU,
     Elu,
     Selu,
     SiLU,
