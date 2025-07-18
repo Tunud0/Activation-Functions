@@ -1,0 +1,31 @@
+package dotstudios.net.nn.modules.activation;
+
+public enum ACTFUNCType {
+    Linear,
+    Sigmoid,
+    LogSigmoid,
+    HardSigmoid,
+    Erf,
+    ReLU,
+    CeLU,
+    LeakyReLU,
+    ReLU6,
+    ReLUofN,
+    PReLU,
+    GELU,
+    Elu,
+    Selu,
+    SiLU,
+    HardSiLU,
+    TanH,
+    ArcTan,
+    TanHShrink,
+    HardTanH,
+    SoftSign,
+    Swish,
+    HardSwish,
+    SoftPlus,
+    Mish,
+    SoftShrink,
+    HardShrink;
+}
