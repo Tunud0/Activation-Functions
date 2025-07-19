@@ -1,0 +1,41 @@
+package dotstudios.net.nn.modules.initializers;
+
+public interface InitFuncINTFACE {
+    double Linear(double x);
+    double PieceWiseLinear(double x);
+    double Sigmoid(double x);
+    double LogSigmoid(double x);
+    double HardSigmoid(double x);
+    double Erf(double x);
+    double ReLU(double x);
+    double CeLU(double x,double alpha);
+    double CeLU(double x);
+    double LeakyReLU(double x,double nSlope);
+    double LeakyReLU(double x);
+    double ReLUofN(double x,double n);
+    double ReLU6(double x);
+    double PReLU(double x,double nSlope);
+    double PReLU(double x);
+    double GeLU(double x);
+    double Elu(double x,double alpha);
+    double Elu(double x);
+    double Selu(double x,double scale,double alpha);
+    double Selu(double x);
+    double SiLU(double x);
+    double HardSiLU(double x);
+    double TanH(double x);
+    double ArcTan(double x);
+    double TanHShrink(double x);
+    double HardTanH(double x,double min,double max);
+    double HardTanH(double x);
+    double SoftSign(double x);
+    double Swish(double x);
+    double HardSwish(double x);
+    double SoftPlus(double x);
+    double Mish(double x);
+    double SoftShrink(double x,double threshold);
+    double SoftShrink(double x);
+    double HardShrink(double x,double threshold);
+    double HardShrink(double x);
+    double UnitStep(double x);
+}
