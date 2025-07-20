@@ -3,6 +3,7 @@ package dotstudios.net.nn.modules.initializers;
 public interface InitFuncINTFACE {
     double Linear(double x);
     double PieceWiseLinear(double x);
+    double BinaryStep(double x);
     double Sigmoid(double x);
     double LogSigmoid(double x);
     double HardSigmoid(double x);
@@ -17,6 +18,7 @@ public interface InitFuncINTFACE {
     double PReLU(double x,double nSlope);
     double PReLU(double x);
     double GeLU(double x);
+    double Gaussian(double x, double standardDeviation, double medium);
     double Elu(double x,double alpha);
     double Elu(double x);
     double Selu(double x,double scale,double alpha);

@@ -15,6 +15,12 @@ public class InitializerFunction implements InitFuncINTFACE {
         else return 0;
     }
     @Override
+    public double BinaryStep(double x) {
+        if(x < 0)
+            return 0;
+        else return 1;
+    }
+    @Override
     public double Sigmoid(double x) {
         //0 to 1
         return 1f / (1 + Math.exp(-x));
@@ -82,7 +88,6 @@ public class InitializerFunction implements InitFuncINTFACE {
     }
     @Override
     public double ReLU6(double x) {
-
         return this.ReLUofN(x,6);
     }
     @Override
@@ -97,6 +102,10 @@ public class InitializerFunction implements InitFuncINTFACE {
     @Override
     public double GeLU(double x) {
         return x*0.5*(1 + this.Erf(x / Math.sqrt(2)));
+    }
+    @Override
+    public double Gaussian(double x, double standardDeviation, double medium) {
+        return 1;
     }
     @Override
     public double Elu(double x, double alpha) {
@@ -172,7 +181,6 @@ public class InitializerFunction implements InitFuncINTFACE {
     }
     @Override
     public double Mish(double x) {
-        //new ActFunc(ACTFUNCType.TanH,new ActFunc(ACTFUNCType.SoftPlus,x).get()).get()
         return x * this.TanH(this.SoftPlus(x));
     }
     @Override
