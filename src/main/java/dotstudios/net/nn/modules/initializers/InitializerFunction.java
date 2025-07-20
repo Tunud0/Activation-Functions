@@ -55,7 +55,7 @@ public class InitializerFunction implements InitFuncINTFACE {
                 t * (-0.82215223 +
                 t * ( 0.17087277)))))))))
         );
-        return x >= 0 ? r : -r;
+        return Math.abs(r);
     }
     @Override
     public double ReLU(double x) {
@@ -105,7 +105,7 @@ public class InitializerFunction implements InitFuncINTFACE {
     }
     @Override
     public double Gaussian(double x, double standardDeviation, double medium) {
-        return 1;
+        return Math.exp(-(Math.pow(x-medium,2)) / (2*Math.pow((standardDeviation),2)));
     }
     @Override
     public double Elu(double x, double alpha) {
