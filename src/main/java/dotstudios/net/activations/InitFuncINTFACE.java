@@ -1,4 +1,4 @@
-package dotstudios.net.nn.modules.initializers;
+package dotstudios.net.activations;
 
 public interface InitFuncINTFACE {
     double Linear(double x);
@@ -26,7 +26,7 @@ public interface InitFuncINTFACE {
     double SiLU(double x);
     double HardSiLU(double x);
     double TanH(double x);
-    double ArcTan(double x);
+    double Coth(double x);
     double TanHShrink(double x);
     double HardTanH(double x,double min,double max);
     double HardTanH(double x);
@@ -40,4 +40,8 @@ public interface InitFuncINTFACE {
     double HardShrink(double x,double threshold);
     double HardShrink(double x);
     double UnitStep(double x);
+    double HardStep(double x, double threshold);
+    double HardStep(double x);
+    double Squareplus(double x, double b);
+    double Squareplus(double x);
 }

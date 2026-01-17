@@ -1,4 +1,4 @@
-package dotstudios.net.nn.modules.initializers;
+package dotstudios.net.activations;
 
 public class InitializerFunction implements InitFuncINTFACE {
     @Override
@@ -43,7 +43,7 @@ public class InitializerFunction implements InitFuncINTFACE {
     public double Erf(double x) {
         //-1 to 1
         double t = 1f / (1 + 0.5 * Math.abs(x));
-        double r = 1 - t * Math.exp(
+        return 1 - t * Math.exp(
                 -x*x - 1.26551223 +
                 t * ( 1.00002368 +
                 t * ( 0.37409196 +
@@ -55,7 +55,6 @@ public class InitializerFunction implements InitFuncINTFACE {
                 t * (-0.82215223 +
                 t * ( 0.17087277)))))))))
         );
-        return Math.abs(r);
     }
     @Override
     public double ReLU(double x) {
@@ -141,11 +140,10 @@ public class InitializerFunction implements InitFuncINTFACE {
     }
     @Override
     public double TanH(double x) {
-        double r = (Math.exp(x) - Math.exp(-x)) / (Math.exp(x) + Math.exp(-x));
-        return Double.isFinite(r) ? r : 1;
+        return Math.tanh(x);
     }
     @Override
-    public double ArcTan(double x) {
+    public double Coth(double x) {
         return 1f/this.TanH(x);
     }
     @Override
@@ -177,6 +175,7 @@ public class InitializerFunction implements InitFuncINTFACE {
     }
     @Override
     public double SoftPlus(double x) {
+        if(x > 20) return x;
         return Math.log(1 + Math.exp(x));
     }
     @Override
@@ -212,5 +211,21 @@ public class InitializerFunction implements InitFuncINTFACE {
         else if(x > 0)
             return 1;
         else return 0.5;
+    }
+    @Override
+    public double HardStep(double x, double threshold) {
+        return (x >= threshold) ? 1.0 : 0.0;
+    }
+    @Override
+    public double HardStep(double x) {
+        return this.HardStep(x, 0.0);
+    }
+    @Override
+    public double Squareplus(double x, double b) {
+        return (x + Math.sqrt(Math.pow(x, 2) + b)) / 2.0;
+    }
+    @Override
+    public double Squareplus(double x) {
+        return this.Squareplus(x, 4.0);
     }
 }

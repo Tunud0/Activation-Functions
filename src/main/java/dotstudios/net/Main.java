@@ -1,10 +1,11 @@
 package dotstudios.net;
 
-import dotstudios.net.nn.modules.initializers.InitializerFunction;
+import dotstudios.net.activations.InitializerFunction;
 
 public class Main {
     public static void main(String[] args) {
-        double n = 138;
-        System.out.println(new InitializerFunction().Gaussian(n,16,100));
+        double n = 160;
+        InitializerFunction f = new InitializerFunction();
+        System.out.println(f.Coth(-0.00000000000000554545455454));
     }
 }
