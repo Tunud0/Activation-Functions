@@ -10,7 +10,7 @@ public class InitializerFunction implements InitFuncINTFACE {
         //0 to 1
         if(x >= 0.5)
             return 1;
-        else if (x < 0.5 && x > -0.5)
+        else if (x < 0.5 && x >= -0.5)
             return x + 0.5;
         else return 0;
     }
@@ -23,12 +23,12 @@ public class InitializerFunction implements InitFuncINTFACE {
     @Override
     public double Sigmoid(double x) {
         //0 to 1
-        return 1f / (1 + Math.exp(-x));
+        return 1.0 / (1 + Math.exp(-x));
     }
     @Override
     public double LogSigmoid(double x) {
         //-Infinity to 0
-        return Math.log(1f / (1 + Math.exp(-x)));
+        return Math.log(1.0 / (1 + Math.exp(-x)));
     }
     @Override
     public double HardSigmoid(double x) {
@@ -37,7 +37,7 @@ public class InitializerFunction implements InitFuncINTFACE {
             return 0;
         else if(x >= 3)
             return 1;
-        else return x/6f + 0.5;
+        else return x/6.0 + 0.5;
     }
     @Override
     public double Erf(double x) {
@@ -92,7 +92,7 @@ public class InitializerFunction implements InitFuncINTFACE {
     @Override
     public double PReLU(double x, double nSlope) {
         if(x >= 0) return x;
-        else return Math.max(nSlope*x,x);
+        else return nSlope*x;
     }
     @Override
     public double PReLU(double x) {
@@ -144,7 +144,9 @@ public class InitializerFunction implements InitFuncINTFACE {
     }
     @Override
     public double Coth(double x) {
-        return 1f/this.TanH(x);
+        double val = this.TanH(x);
+        if (Math.abs(val) < 1e-15) return 0.0;
+        return 1.0 / val;
     }
     @Override
     public double TanHShrink(double x) {
@@ -152,18 +154,16 @@ public class InitializerFunction implements InitFuncINTFACE {
     }
     @Override
     public double HardTanH(double x, double min, double max) {
-        if(x >= max)
-            return max;
-        else return Math.max(x,min);
+        return Math.max(min, Math.min(max, x));
     }
     @Override
     public double HardTanH(double x) {
-        return this.HardTanH(x,-1,1);
+        return this.HardTanH(x,-1.0,1.0);
     }
     @Override
     public double SoftSign(double x) {
         //-1 to 1
-        return x / (1f + Math.abs(x));
+        return x / (1.0 + Math.abs(x));
     }
     @Override
     public double Swish(double x) {
@@ -186,8 +186,8 @@ public class InitializerFunction implements InitFuncINTFACE {
     public double SoftShrink(double x, double threshold) {
         if(x > threshold)
             return x - threshold;
-        else if(x < threshold)
-            return threshold - x;
+        else if(x < -threshold)
+            return threshold + x;
         else return 0;
     }
     @Override

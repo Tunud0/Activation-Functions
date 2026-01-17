@@ -25,8 +25,8 @@ $$result = x$$
 ## - PieceWiseLinear
 #### Parameters: x
 $$x < -0.5: result = 0$$
-$$x > -0.5 \wedge x < 0.5: result = x + 0.5$$
-$$x > 0.5: result = 1$$
+$$x >= -0.5 \wedge x < 0.5: result = x + 0.5$$
+$$x >= 0.5: result = 1$$
 #### Codomain: $$[0, 1]$$
 
 ## - BinaryStep
@@ -82,7 +82,7 @@ $$ReLU6(x) = min(6,max(0,x))$$
 ## - PReLU
 #### Parameters: x, nSlope(default is 0.01)
 $$x >= 0: result = x$$
-$$x < 0: result = max(nSlope \cdot x,x)$$
+$$x < 0: result = nSlope \cdot x$$
 #### Codomain: $$(-\infty, \infty)$$
 
 ## - GeLU
@@ -158,7 +158,7 @@ $$HardSwish(x) = HardSiLU(x)$$
 
 ## - SoftPlus
 #### Parameters: x
-$$softplus(x) = {1 + exp(x)}$$
+$$softplus(x) = ln({1 + exp(x)})$$
 #### Codomain: $$(0, +\infty)$$
 
 ## - Mish
@@ -169,8 +169,8 @@ $$Mish(x) = x \cdot \tanh(\text{softplus}(x))$$
 ## - SoftShrink
 #### Parameters: x, threshold(default is 0.5)
 $$x > threshold: result = x - threshold$$
-$$x < threshold: result = threshold - x$$
-$$x == threshold: result = 0$$
+$$x < -threshold: result = threshold + x$$
+$$x >= -threshold \wedge x < threshold: result = 0$$
 #### Codomain: $$(-\infty, +\infty)$$
 
 ## - HardShrink
