@@ -195,4 +195,4 @@ $$x \ge threshold: result = 1$$
 ## - Squareplus
 #### Parameters: x, b(default is 4)
 $$Squareplus(x) = \frac{x + \sqrt{x^2 + b}}{2}$$
-#### Codomain: $$$(0, +\infty)$$$
+#### Codomain: $$(0, +\infty)$$
